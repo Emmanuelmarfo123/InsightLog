@@ -358,8 +358,7 @@ class InsightLogAnalyzer:
         :param path: string
         """
         pass  # Feature stub
-
-# TODO: Add export to CSV
+        # TODO: Add export to CSV
 class InsightLogAnalyzer:
     def export_to_csv(self, path):
         """
@@ -391,4 +390,6 @@ class InsightLogAnalyzer:
             print(f" CSV export successful: {path}")
         except Exception as e:
             print(f" Failed to export CSV: {e}")
+
+
            
