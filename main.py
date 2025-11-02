@@ -18,35 +18,4 @@ def main():
 
 if __name__ == '__main__':
     main() 
-TODO: Add export to CSV
-class InsightLogAnalyzer:
-    def export_to_csv(self, path):
-        """
-        Export filtered results to a CSV file.
 
-        :param path: string - Path where the CSV should be saved.
-        """
-        data = getattr(self, "filtered_requests", None) or self.get_requests()
-        if not data:
-            print(" No data to export.")
-            return
-
-        try:
-            with open(path, mode='w', newline='', encoding='utf-8') as csvfile:
-                if isinstance(data[0], dict):
-                    # Write dictionaries directly
-                    writer = csv.DictWriter(csvfile, fieldnames=data[0].keys())
-                    writer.writeheader()
-                    writer.writerows(data)
-                else:
-                    # Convert objects to dicts if needed
-                    fieldnames = [attr for attr in dir(data[0]) if not attr.startswith(
-                        '_') and not callable(getattr(data[0], attr))]
-                    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                    writer.writeheader()
-                    for item in data:
-                        writer.writerow({f: getattr(item, f)
-                                        for f in fieldnames})
-            print(f" CSV export successful: {path}")
-        except Exception as e:
-            print(f" Failed to export CSV: {e}")
